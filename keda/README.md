@@ -142,6 +142,7 @@ their default values.
 | `operator.disableCompression` | bool | `true` | Disable response compression for k8s restAPI in client-go. Disabling compression simply means that turns off the process of making data smaller for K8s restAPI in client-go for faster transmission. |
 | `operator.dnsConfig` | object | `{}` | DNS config for KEDA operator pod |
 | `operator.dnsPolicy` | string | `"ClusterFirst"` | Defined the DNS policy for the operator |
+| `operator.enabledScalers` | list | `[]` | Allow-list of scaler trigger types the operator will instantiate, passed to `--enabled-scalers`. When the list is empty (default), every scaler is enabled. When set, ScaledObjects/ScaledJobs referencing a type that is not in the list are rejected at admission time and at scaler-build time. |
 | `operator.extraContainers` | list | `[]` | Additional containers to run as part of the operator deployment |
 | `operator.extraInitContainers` | list | `[]` | Additional init containers to run as part of the operator deployment |
 | `operator.leaderElectionID` | string | `nil` | When set, overrides the leader election Lease resource name via the `--leader-election-id` flag. When unset (default), the flag is not passed and the operator uses its built-in default (`operator.keda.sh`). Override to allow multiple independent KEDA operator deployments in the same namespace. |

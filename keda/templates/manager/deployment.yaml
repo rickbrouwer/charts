@@ -82,6 +82,9 @@ spec:
           {{- if .Values.operator.leaderElectionID }}
           - "--leader-election-id={{ .Values.operator.leaderElectionID }}"
           {{- end }}
+          {{- with .Values.operator.enabledScalers }}
+          - "--enabled-scalers={{ join "," . }}"
+          {{- end }}
           - "--disable-compression={{ .Values.operator.disableCompression}}"
           - "--zap-log-level={{ .Values.logging.operator.level }}"
           - "--zap-encoder={{ .Values.logging.operator.format }}"

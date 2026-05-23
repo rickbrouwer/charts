@@ -99,6 +99,10 @@ operator:
   # -- Leader election ID (Lease resource name) for the controller manager. Defaults to operator.keda.sh.
   # Override to allow multiple independent KEDA operator deployments in the same namespace.
   # leaderElectionID: "operator.keda.sh"
+  # -- Allow-list of scaler trigger types the operator will instantiate, passed to `--enabled-scalers`.
+  # When the list is empty (default), every scaler is enabled. When set, ScaledObjects/ScaledJobs referencing
+  # a type that is not in the list are rejected at admission time and at scaler-build time.
+  enabledScalers: []
   # -- DNS config for KEDA operator pod
   dnsConfig: {}
   # use ClusterFirstWithHostNet if `useHostNetwork: true` https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-policy
